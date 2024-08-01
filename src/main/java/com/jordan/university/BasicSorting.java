@@ -1,4 +1,4 @@
-package com.jordan.older;
+package com.jordan.university;
 
 public class BasicSorting {
     public static Comparable[] sort(Comparable[] arr){

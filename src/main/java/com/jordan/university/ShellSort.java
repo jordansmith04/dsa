@@ -1,12 +1,12 @@
-package com.jordan.older;
+package com.jordan.university;
 
 import java.util.Arrays;
 
-public class SelectionSort {
+public class ShellSort {
 
     /**
      *
-     * Time complexity: n^2 / 2
+     * Time complexity: O(n^(3/2))
      * Space complexity: n
      *
      * Idea with Selection sort:
@@ -16,14 +16,21 @@ public class SelectionSort {
      */
 
     public static Comparable[] sort(Comparable[] arr){
-        for(int i = 0; i < arr.length; i++){
-            int lowIndex = i;
-            for(int j = i + 1; j < arr.length; j++)
-                if(less(arr[j], arr[lowIndex])) {
-                    lowIndex = j;
-                }
-            swap(arr, i, lowIndex);
 
+        int h = 1;
+        while( h < arr.length / 3) h = 3*h + 1;  // increment h by 3x + 1 until h > arr.length / 3
+
+        while(h > 0) {
+            for(int i = h; i < arr.length; i++){    // count up from h to arr
+                int j = i;
+                while(j >= h){ //j = 4 //j = 5
+                    if(less(arr[j], arr[j-h])) // less(arr[4], arr[4-4])  //less(5, 5-4)
+                        swap(arr, j, j - h); //swap(4, 0) //swap(5, 1)
+                    j -= h; //break because while( j >= 4 ...) , j = 0
+                }
+            }
+
+            h /= 3;
         }
         return arr;
     }

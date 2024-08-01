@@ -1,4 +1,4 @@
-package com.jordan.older;
+package com.jordan.university;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,8 +1,8 @@
-package com.jordan.older;
+package com.jordan.university;
 
 import java.util.Arrays;
 
-import static com.jordan.older.MergesortAtmpt1.less;
+import static com.jordan.university.MergesortAtmpt1.less;
 
 public class MergeSort {
 

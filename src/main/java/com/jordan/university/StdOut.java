@@ -1,4 +1,4 @@
-package com.jordan.older;
+package com.jordan.university;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;

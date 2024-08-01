@@ -1,4 +1,4 @@
-package com.jordan.older;
+package com.jordan.university;
 
 public class WeightedQuickUnion {
     private int[] parent;   // parent[i] = parent of i

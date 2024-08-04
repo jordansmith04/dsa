@@ -83,25 +83,38 @@ public class Palindromes {
          6. "8558", false
      */
 
-    public static boolean almostAPalindrome(String s ){
+    public static boolean almostAPalindrome(String s){
         s = filterChars(s);
         if(s.length() <= 1) return true;
-        int skipsRemaining = 1;
-        int left = s.length() / 2;
-        int right = s.length() / 2;
-        if(s.length() % 2 == 0){
-            left = (s.length() - 1) / 2;
-            right = (s.length() + 1) / 2;
-        }
-        while(left >= 0 && right <= s.length() - 1){
-            if(s.charAt(left) != s.charAt(right)){
-
+        int left = 0;
+        int right = s.length() -1;
+        while(left < right){
+            if(s.charAt(left) != s.charAt(right)) {
+                return validSubPalindrome(s, left, right - 1) || validSubPalindrome(s, left + 1, right);
             }
-            left--;
-            right++;
+            left++;
+            right--;
         }
         return true;
     }
+
+    public static boolean validSubPalindrome(String s, int left, int right){
+        if(s.length() <= 1) return true;
+        while(left < right){
+            if(s.charAt(left) != s.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    /*
+        Complexity:
+            Time: O(N)
+            Space: O(1)
+     */
 
     public static void main(String[] args){
         System.out.println(isPalindromeFromOutside("A man, a plan, a canal: Panama"));
@@ -109,6 +122,10 @@ public class Palindromes {
 
         System.out.println(isPalindromeFromInside("A man, a plan, a canal: Panama"));
         System.out.println(isPalindromeFromInside("8558"));
+
+        System.out.println(almostAPalindrome("A man, a plan, acanal: Panama"));
+        System.out.println(almostAPalindrome("8b558r"));
+        System.out.println(almostAPalindrome("eedede"));
     }
 
 

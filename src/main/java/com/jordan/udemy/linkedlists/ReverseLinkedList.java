@@ -25,21 +25,20 @@ public class ReverseLinkedList {
 
      */
 
-    public static ListNode reverseLinkedListBrute(ListNode head){
-        HashSet<ListNode> visitedNodes = new HashSet<>();
-        ListNode temp = head;
-        while(temp.next != null && visitedNodes.add(temp)){
-            head = temp.next;
-            head.next = temp.next.next;
-            temp = temp.next;
-
+    public static ListNode reverseLinkedList(ListNode head){
+        ListNode prev = null;
+        ListNode current = head;
+        while(current != null){
+            ListNode next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
         }
-
-        return head;
+        return prev;
     }
 
     public static void printLinkedList(ListNode head){
-        while(head.next != null){
+        while(head != null){
             System.out.println(head.value);
             head = head.next;
         }
@@ -63,7 +62,8 @@ public class ReverseLinkedList {
         next3.value = 3;
         next4.value = 4;
         next5.value = 5;
-        printLinkedList(reverseLinkedListBrute(head));
+//        printLinkedList(head);
+        printLinkedList(reverseLinkedList(head));
     }
 
 }
